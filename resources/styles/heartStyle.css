@@ -7,6 +7,7 @@ body {
   justify-content: center;
   height: 99vh;
   width: 99vw;
+  overflow: hidden;
 }
 body div {
   margin: auto;
@@ -17,6 +18,10 @@ body div {
   background-size: contain;
   background-repeat: no-repeat;
 }
+body div:hover svg {
+  fill: red;
+  transition: 0.8s;
+}
 body div svg {
   width: 100px;
   height: 100px;
@@ -24,8 +29,8 @@ body div svg {
   left: 170px;
   top: 40%;
   fill: grey;
-  -webkit-animation: heart 2s ease-out infinite;
-          animation: heart 2s ease-out infinite;
+  -webkit-animation: heart 1s ease-out infinite;
+          animation: heart 1s ease-out infinite;
 }
 
 @-webkit-keyframes heart {
@@ -33,12 +38,16 @@ body div svg {
     transform: scale(1, 1);
     fill-opacity: 100%;
   }
-  50% {
+  30% {
     transform: scale(1.5, 1.5);
     fill-opacity: 10%;
   }
+  45% {
+    transform: scale(2, 2);
+  }
   100% {
     transform: scale(1, 1);
+    fill-opacity: 100%;
   }
 }
 
@@ -47,11 +56,29 @@ body div svg {
     transform: scale(1, 1);
     fill-opacity: 100%;
   }
-  50% {
+  30% {
     transform: scale(1.5, 1.5);
     fill-opacity: 10%;
   }
+  45% {
+    transform: scale(2, 2);
+  }
   100% {
     transform: scale(1, 1);
+    fill-opacity: 100%;
+  }
+}
+@media (max-width: 450px) {
+  body div {
+    margin: auto;
+    width: 17rem;
+    height: 19rem;
+  }
+  body div svg {
+    width: 4rem;
+    height: 4rem;
+    position: relative;
+    left: 6.8rem;
+    top: 40%;
   }
 }/*# sourceMappingURL=heartStyle.css.map */
