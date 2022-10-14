@@ -9,7 +9,7 @@ body {
   width: 99vw;
   overflow: hidden;
 }
-body div {
+body div.tama {
   margin: auto;
   width: 440px;
   height: 500px;
@@ -18,67 +18,114 @@ body div {
   background-size: contain;
   background-repeat: no-repeat;
 }
-body div:hover svg {
-  fill: red;
-  transition: 0.8s;
-}
-body div svg {
-  width: 100px;
-  height: 100px;
+body div.tama div.rotate {
+  transform: rotate(-45deg);
   position: relative;
-  left: 170px;
-  top: 40%;
-  fill: grey;
+  left: 205px;
+  top: 45%;
+  display: inline-block;
+}
+body div.tama div.rotate div.heart {
+  content: "";
+  background-color: grey;
+  display: inline-block;
+  width: 30px;
+  height: 30px;
+  transition: 0.8s;
   -webkit-animation: heart 1s ease-out infinite;
           animation: heart 1s ease-out infinite;
+}
+body div.tama div.rotate div.heart::before, body div.tama div.rotate div.heart::after {
+  content: "";
+  background-color: grey;
+  border-radius: 50%;
+  height: 30px;
+  position: absolute;
+  width: 30px;
+  transform: rotate(180deg);
+  transition: 0.8s;
+}
+body div.tama div.rotate div.heart::before {
+  top: -15px;
+  left: 0;
+  transform: rotate(180deg);
+  transition: 0.8s;
+}
+body div.tama div.rotate div.heart::after {
+  left: 15px;
+  top: 0;
+  transform: rotate(180deg);
+  transition: 0.8s;
+}
+body div.tama:hover .heart {
+  background-color: red !important;
+  transition: 0.8s;
+}
+body div.tama:hover .heart::before, body div.tama:hover .heart::after {
+  background-color: red !important;
+  transition: 0.8s;
 }
 
 @-webkit-keyframes heart {
   0% {
     transform: scale(1, 1);
-    fill-opacity: 100%;
+    opacity: 100%;
   }
   30% {
     transform: scale(1.5, 1.5);
-    fill-opacity: 10%;
+    opacity: 10%;
   }
   45% {
     transform: scale(2, 2);
   }
   100% {
     transform: scale(1, 1);
-    fill-opacity: 100%;
+    opacity: 100%;
   }
 }
 
 @keyframes heart {
   0% {
     transform: scale(1, 1);
-    fill-opacity: 100%;
+    opacity: 100%;
   }
   30% {
     transform: scale(1.5, 1.5);
-    fill-opacity: 10%;
+    opacity: 10%;
   }
   45% {
     transform: scale(2, 2);
   }
   100% {
     transform: scale(1, 1);
-    fill-opacity: 100%;
+    opacity: 100%;
   }
 }
 @media (max-width: 450px) {
-  body div {
+  body div.tama {
     margin: auto;
     width: 17rem;
     height: 19rem;
   }
-  body div svg {
-    width: 4rem;
-    height: 4rem;
-    position: relative;
-    left: 6.6rem;
-    top: 40%;
+  body div.tama div.rotate {
+    left: 8.1rem;
+    top: 47%;
+  }
+  body div.tama div.rotate div.heart {
+    width: 1.5rem;
+    height: 1.5rem;
+  }
+  body div.tama div.rotate div.heart::before, body div.tama div.rotate div.heart::after {
+    border-radius: 50%;
+    height: 1.5rem;
+    width: 1.5rem;
+  }
+  body div.tama div.rotate div.heart::before {
+    top: -0.75rem;
+    left: 0;
+  }
+  body div.tama div.rotate div.heart::after {
+    left: 0.75rem;
+    top: 0;
   }
 }/*# sourceMappingURL=heartStyle.css.map */

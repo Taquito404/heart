@@ -1,14 +1,15 @@
 body {
   background-image: url(../img/lofi-anime.gif);
   background-repeat: no-repeat;
-  background-size:cover ;
+  background-size: cover;
   display: flex;
   align-items: center;
   justify-content: center;
   height: 99vh;
   width: 99vw;
   overflow: hidden;
-  div {
+
+  div.tama {
     margin: auto;
     width: 440px;
     height: 500px;
@@ -16,20 +17,62 @@ body {
     background-image: url(../img/tama.png);
     background-size: contain;
     background-repeat: no-repeat;
-    &:hover{
-      svg{
-        fill:red;
-        transition:0.8s;
+
+    div.rotate {
+      transform: rotate(-45deg);
+      position: relative;
+      left: 205px;
+      top: 45%;
+      display: inline-block;
+
+      div.heart {
+        content: "";
+        background-color: grey;
+        display: inline-block;
+        width: 30px;
+        height: 30px;
+        transition: 0.8s ;
+        animation: heart 1s ease-out infinite;
+
+        &::before,
+        &::after {
+          content: "";
+          background-color: grey;
+          border-radius: 50%;
+          height: 30px;
+          position: absolute;
+          width: 30px;
+          transform: rotate(180deg);
+          transition: 0.8s ;
+        }
+
+        &::before {
+          top: -15px;
+          left: 0;
+          transform: rotate(180deg);
+          transition: 0.8s ;
+        }
+
+        &::after {
+          left: 15px;
+          top: 0;
+          transform: rotate(180deg);
+          transition: 0.8s ;
+        }
       }
     }
-    svg {
-      width: 100px;
-      height: 100px;
-      position: relative;
-      left: 170px;
-      top: 40%;
-      fill: grey;
-      animation: heart 1s ease-out infinite;
+
+    &:hover {
+      .heart {
+        background-color: red !important;
+        transition: 0.8s ;
+
+        &::before,
+        &::after {
+          background-color: red !important;
+          transition: 0.8s;
+        }
+      }
     }
   }
 }
@@ -38,37 +81,58 @@ body {
 @keyframes heart {
   0% {
     transform: scale(1, 1);
-    fill-opacity: 100%;
+    opacity: 100%;
   }
 
   30% {
     transform: scale(1.5, 1.5);
-    fill-opacity: 10%;
+    opacity: 10%;
   }
-  45%{
-    transform: scale(2,2);
+
+  45% {
+    transform: scale(2, 2);
   }
 
   100% {
     transform: scale(1, 1);
-    fill-opacity: 100%;
+    opacity: 100%;
 
   }
 }
 
 @media (max-width:450px) {
-body{
-  div{
-    margin: auto;
-    width: 17rem;
-    height: 19rem;
-    svg{
-      width: 4rem;
-      height: 4rem;
-      position: relative;
-      left: 6.6rem;
-      top: 40%;
+  body {
+    div.tama {
+      margin: auto;
+      width: 17rem;
+      height: 19rem;
+
+      div.rotate {
+        left: 8.1rem;
+        top: 47%;
+
+        div.heart {
+          width: 1.5rem;
+          height: 1.5rem;
+
+          &::before,
+          &::after {
+            border-radius: 50%;
+            height: 1.5rem;
+            width: 1.5rem;
+          }
+
+          &::before {
+            top: -.75rem;
+            left: 0;
+          }
+
+          &::after {
+            left: .75rem;
+            top: 0;
+          }
+        }
+      }
     }
   }
-}
 }
